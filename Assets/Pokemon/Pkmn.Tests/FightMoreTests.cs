@@ -57,8 +57,17 @@ namespace Pkmn.Tests
         [Test]
         public void PrioEquipementUnique()
         {
-            var c = new Character(100, 50, 30, 20, TYPE.NORMAL);
+            var axoloto = new Character(100, 50, 30, 20, TYPE.NORMAL);
             var e = new Equipment(0, 50, 50, 30, EFFECT.PRIO);
+            axoloto.Equip(e);
+            var bidoof = new Character(100, 50, 30, 98989, TYPE.NORMAL);
+            Punch p = new Punch();
+            MegaPunch mp = new MegaPunch();
+            Fight f = new Fight(axoloto, bidoof);
+
+            f.ExecuteTurn(mp, p);
+            Assert.That(axoloto.IsAlive, Is.EqualTo(true));
+            Assert.That(bidoof.IsAlive, Is.EqualTo(false));
         }
         // - Le support des status (sleep et burn) qui font des effets à la fin du tour et/ou empeche le pkmn d'agir
         // - Gérer la notion de force/faiblesse avec les différentes attaques à disposition (skills.cs)
