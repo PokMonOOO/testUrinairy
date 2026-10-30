@@ -17,7 +17,7 @@ namespace Pkmn
             BonusSpeed = bonusSpeed;
 
             BonusEffect = effect;
-            EffectUsed = false;
+            CanUseEffect = true;
         }
 
         public int BonusHealth { get; protected set; }
@@ -26,10 +26,10 @@ namespace Pkmn
         public int BonusSpeed { get; protected set; }
 
         public EFFECT BonusEffect { get; protected set; }
-        public bool EffectUsed { get; protected set; }
+        public bool CanUseEffect { get; protected set; }
 
 
-        public void UseEffect() => EffectUsed = false;
+        public void UseEffect() => CanUseEffect = false;
 
     }
 }

@@ -58,7 +58,7 @@ namespace Pkmn.Tests
         public void PrioEquipementUnique()
         {
             var c = new Character(100, 50, 30, 20, TYPE.NORMAL);
-            var e = new Equipment(100, 90, 70, 12);
+            var e = new Equipment(0, 50, 50, 30, EFFECT.PRIO);
         }
         // - Le support des status (sleep et burn) qui font des effets à la fin du tour et/ou empeche le pkmn d'agir
         // - Gérer la notion de force/faiblesse avec les différentes attaques à disposition (skills.cs)

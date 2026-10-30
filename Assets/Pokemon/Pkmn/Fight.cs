@@ -30,14 +30,19 @@ namespace Pkmn
         {
             if (skillFromCharacter1 == null || skillFromCharacter2 == null) throw new ArgumentNullException();
 
-            if (Character1.Speed > Character2.Speed)
-                {
-                    Character2.ReceiveAttack(skillFromCharacter1);
-                }
-                else
-                {
-                    Character1.ReceiveAttack(skillFromCharacter2);
-                }
+
+            if (Character1.Speed > Character2.Speed ||
+             Character1.CurrentEquipment.CanUseEffect)
+            {
+                Character2.ReceiveAttack(skillFromCharacter1);
+                if (Character1.CurrentEquipment.CanUseEffect) Character1.Unequip();
+            }
+            else if (Character2.Speed > Character1.Speed ||
+             !Character2.CurrentEquipment.CanUseEffect)
+            {
+                Character1.ReceiveAttack(skillFromCharacter2);
+                if (Character2.CurrentEquipment.CanUseEffect) Character2.Unequip();
+            }
         }
 
     }
